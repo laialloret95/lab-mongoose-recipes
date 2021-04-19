@@ -51,6 +51,7 @@ mongoose
   })
   .then(() => {
     console.log('Carrot Cake removed');
+    mongoose.connection.close()
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
