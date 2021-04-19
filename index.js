@@ -20,7 +20,22 @@ mongoose
     return self.connection.dropDatabase();
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
+    // Run your code here, after you have ensured that the connection was made
+    const data = {
+      title: 'pasta peperoncino',
+      level: 'Easy Peasy',
+      ingredients: ['pasta', 'peperoncino', 'olive oil'],
+      cuisine: 'italian',
+      dishType: 'main_course',
+      image: 'https://www.melarossa.it/wp-content/uploads/2018/05/pasta-aglio-olio-peperoncino.jpg?x96257',
+      duration: 5,
+      creator: 'Laia Lloret',
+      created: '2020-04-19'
+    }
+    return Recipe.create(data)
+  })
+  .then(() => {
+    console.log('recipe title ', Recipe.find( {title: 'pasta peperoncino'} ));
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
