@@ -15,28 +15,31 @@ mongoose
     useUnifiedTopology: true
   })
   .then(self => {
-    console.log(`Connected to the database: "${self.connection.name}"`);
+    return console.log(`Connected to the database: "${self.connection.name}"`);
     // Before adding any documents to the database, let's delete all previous entries
-    return self.connection.dropDatabase();
+    //return self.connection.dropDatabase();
   })
-  .then(() => {
-    // Run your code here, after you have ensured that the connection was made
-    const data = {
-      title: 'pasta peperoncino',
-      level: 'Easy Peasy',
-      ingredients: ['pasta', 'peperoncino', 'olive oil'],
-      cuisine: 'italian',
-      dishType: 'main_course',
-      image: 'https://www.melarossa.it/wp-content/uploads/2018/05/pasta-aglio-olio-peperoncino.jpg?x96257',
-      duration: 5,
-      creator: 'Laia Lloret',
-      created: '2020-04-19'
-    }
-    return Recipe.create(data)
-  })
-  .then(() => {
-    console.log('recipe title ', Recipe.find( {title: 'pasta peperoncino'} ));
-  })
+  // .then(() => {
+  //   // Run your code here, after you have ensured that the connection was made
+  //   const data = {
+  //     title: 'pasta peperoncino',
+  //     level: 'Easy Peasy',
+  //     ingredients: ['pasta', 'peperoncino', 'olive oil'],
+  //     cuisine: 'italian',
+  //     dishType: 'main_course',
+  //     image: 'https://www.melarossa.it/wp-content/uploads/2018/05/pasta-aglio-olio-peperoncino.jpg?x96257',
+  //     duration: 5,
+  //     creator: 'Laia Lloret',
+  //     created: '2020-04-19'
+  //   }
+  //   return Recipe.create(data)
+  // })
+  // .then(() => {
+  //   console.log('recipe title ', Recipe.find( {title: 'pasta peperoncino'} ));
+  // })
+  // .then(() => {
+  //   Recipe.insertMany(data)
+  // })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
